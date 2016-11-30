@@ -24,8 +24,36 @@
 					<label for="inputTask">Qual tarefa deseja adicionar?</label>
 					<input type="text" class="form-control" ng-model="newTask" placeholder="Tarefa" />
 				</div> <!-- Close form-group add tsk -->
-				<button type="submit" class="btn btn-default" ng-click="tcontroller.add(newTask)">Adicionar</button>
-				<button type="reset" class="btn btn-danger" ng-click="tcontroller.clear()">Limpar lista</button>
+				<button type="submit" class="btn btn-primary" ng-click="tcontroller.add(newTask)">Adicionar</button>
+				<button type="reset" class="btn btn-danger" data-toggle="modal" data-target="#clearConfirm">Limpar lista</button>
+				<!--button type="reset" class="btn btn-danger" ng-click="tcontroller.clear()">Limpar lista</button-->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="clearConfirm">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Limpar</h4>
+							</div> <!-- Close modal header -->
+							
+							<div class="modal-body">
+								<p>Deseja limpar a lista de tarefas?</p>
+								<div class="alert alert-warning">
+									<strong>Cuidado!</strong> Essa ação não pode ser desfeita!
+								</div> <!-- Close alert -->
+							</div> <!-- Close modal body -->
+							
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-danger" ng-click="tcontroller.clear()" data-dismiss="modal">Limpar lista</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							</div> <!-- Close modal footer -->
+							
+						</div> <!-- Close modal content -->
+					</div> <!-- Close modal dialog -->
+				</div> <!-- Close modal -->
+				
 			</form>
 			
 			<div class="container">
@@ -37,14 +65,15 @@
 					</div> <!-- Close progress-bar -->
 				</div> <!-- Close progress -->
 				
+				<!--div class="list-group"-->
 				<div class="list-group" ng-repeat="task in tcontroller.tasksArray">
 					<label class="checkbox input-lg list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
-					<!--li class="list-group-item" ng-repeat="task in tcontroller.tasksArray">
-						<label class="checkbox input-lg"><input type="checkbox" />{{task}}</label>
-					</li-->
+					<!--div ng-repeat="task in tcontroller.tasksArray">
+						<label class="checkbox list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
+						<!--label class="checkbox input-lg"><input type="checkbox" />{{task}}</label-->
+					<!--/div -->
 				</div>
 			</div>
-			
 			
 		</div> <!-- Close container -->
 	</body>

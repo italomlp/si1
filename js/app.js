@@ -24,8 +24,6 @@ app.controller('TasksController', function() {
 				tasksDone = tasksDone + 1;
 			}
 		}
-		if (tasksDone != 0) {
-			this.actualPercent = (100 * tasksDone) / this.tasksArray.length;
-		}
+		this.actualPercent = (100 * tasksDone) / this.tasksArray.length;
 	};
 });
