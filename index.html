@@ -32,16 +32,17 @@
 				<h2>Tarefas:</h2>
 				
 				<div class="progress">
-					<div class="progress-bar" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-						30%
+					<div class="progress-bar" aria-valuemin="0" aria-valuemax="100" style="width:{{tcontroller.actualPercent}}%">
+						{{tcontroller.actualPercent}}%
 					</div> <!-- Close progress-bar -->
 				</div> <!-- Close progress -->
 				
-				<ul>
-					<li class="list-group-item" ng-repeat="task in tcontroller.tasksArray">
-						<label for="checkTask" class="checkbox input-lg"><input type="checkbox" id="checkTask"/>{{task}}</label>
-					</li>
-				</ul>
+				<div class="list-group" ng-repeat="task in tcontroller.tasksArray">
+					<label class="checkbox input-lg list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
+					<!--li class="list-group-item" ng-repeat="task in tcontroller.tasksArray">
+						<label class="checkbox input-lg"><input type="checkbox" />{{task}}</label>
+					</li-->
+				</div>
 			</div>
 			
 			
