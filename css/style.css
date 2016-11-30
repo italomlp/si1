@@ -1,0 +1,8 @@
+body {
+	background-color: #ffeecc;
+}
+
+#removeTaskButton {
+	position: absolute;
+	right : 50px;
+}
