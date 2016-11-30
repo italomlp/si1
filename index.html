@@ -5,6 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,7 +22,7 @@
 			
 			<form>
 				<div class="form-group">
-					<label for="inputTask">Qual tarefa deseja adicionar?</label>
+					<label for="inputTask">Digite uma tarefa que queira adicionar</label>
 					<input type="text" class="form-control" ng-model="newTask" placeholder="Tarefa" />
 				</div> <!-- Close form-group add tsk -->
 				<button type="submit" class="btn btn-primary" ng-click="tcontroller.add(newTask)">Adicionar</button>
@@ -40,7 +41,7 @@
 							
 							<div class="modal-body">
 								<p>Deseja limpar a lista de tarefas?</p>
-								<div class="alert alert-warning">
+								<div class="alert alert-danger">
 									<strong>Cuidado!</strong> Essa ação não pode ser desfeita!
 								</div> <!-- Close alert -->
 							</div> <!-- Close modal body -->
@@ -65,14 +66,18 @@
 					</div> <!-- Close progress-bar -->
 				</div> <!-- Close progress -->
 				
-				<!--div class="list-group"-->
-				<div class="list-group" ng-repeat="task in tcontroller.tasksArray">
-					<label class="checkbox input-lg list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
-					<!--div ng-repeat="task in tcontroller.tasksArray">
-						<label class="checkbox list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
-						<!--label class="checkbox input-lg"><input type="checkbox" />{{task}}</label-->
-					<!--/div -->
+				<!-- <div class="list-group input-lg checkbox" ng-repeat="task in tcontroller.tasksArray">
+					<label class="list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
+				</div> -->
+				
+				<div class="panel-group checkbox input-lg">
+					<div class="panel panel-default" ng-repeat="task in tcontroller.tasksArray">
+						<div class="panel-body">
+							<label><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}<button type="button" class="close" ng-click="tcontroller.remove(task)" id="removeTaskButton">&times;</button></label>
+						</div>
+					</div>
 				</div>
+				
 			</div>
 			
 		</div> <!-- Close container -->

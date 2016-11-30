@@ -12,6 +12,11 @@ app.controller('TasksController', function() {
 		this.calculatePercent();
 	};
 	
+	this.remove = function (task) {
+		this.tasksArray.splice(this.tasksArray.indexOf(task), 1);
+		this.calculatePercent();
+	};
+	
 	this.clear = function () {
 		this.tasksArray = [];
 		this.actualPercent = 0;
@@ -24,6 +29,6 @@ app.controller('TasksController', function() {
 				tasksDone = tasksDone + 1;
 			}
 		}
-		this.actualPercent = (100 * tasksDone) / this.tasksArray.length;
+		this.actualPercent = ((100 * tasksDone) / this.tasksArray.length).toFixed(2);
 	};
 });
