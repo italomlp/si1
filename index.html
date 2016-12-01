@@ -61,21 +61,38 @@
 				<h2>Tarefas:</h2>
 				
 				<div class="progress">
-					<div class="progress-bar" aria-valuemin="0" aria-valuemax="100" style="width:{{tcontroller.actualPercent}}%">
+					<div class="progress-bar progress-bar-striped" aria-valuemin="0" aria-valuemax="100" style="width:{{tcontroller.actualPercent}}%">
 						{{tcontroller.actualPercent}}%
 					</div> <!-- Close progress-bar -->
 				</div> <!-- Close progress -->
 				
-				<!-- <div class="list-group input-lg checkbox" ng-repeat="task in tcontroller.tasksArray">
-					<label class="list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}</label>
+				<!-- <div class="list-group input-lg" ng-repeat="task in tcontroller.tasksArray">
+					<label class="list-group-item"><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}<button type="button" class="close" ng-click="tcontroller.remove(task)" id="removeTaskButton">&times;</button></label>
 				</div> -->
 				
-				<div class="panel-group checkbox input-lg">
+				<!-- <div class="panel-group checkbox input-lg">
 					<div class="panel panel-default" ng-repeat="task in tcontroller.tasksArray">
 						<div class="panel-body">
 							<label><input type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>{{task.name}}<button type="button" class="close" ng-click="tcontroller.remove(task)" id="removeTaskButton">&times;</button></label>
 						</div>
 					</div>
+				</div> -->
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<tbody>
+							<tr ng-repeat="task in tcontroller.tasksArray">
+								<td>
+									<input id="{{$index}}" type="checkbox" ng-model="task.done" ng-change="tcontroller.calculatePercent()"/>
+								</td>
+								<td>
+									<label for="{{$index}}">{{task.name}}</label>
+								</td>
+								<td>
+									<button type="button" class="close" ng-click="tcontroller.remove(task)" id="removeTaskButton">&times;</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				
 			</div>
