@@ -1,0 +1,16 @@
+<div ng-controller="TaskController">
+    <form ng-submit="saveCategory()">
+        <!--<div class="modal-body">-->
+            <div class="form-group">
+                <label for="categoryName">Nome da categoria</label>
+                <input id="categoryName" class="form-control" ng-model="category.name">
+            </div>
+        <!--</div>-->
+
+        <!--<div class="modal-footer">-->
+            <button type="reset" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-warning" data-dismiss="modal">Salvar</button>
+        <!--</div>-->
+
+    </form>
+</div>

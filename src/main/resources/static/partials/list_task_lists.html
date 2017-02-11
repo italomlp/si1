@@ -1,0 +1,66 @@
+<h4>Listas de Tarefas</h4>
+
+
+<div ng-show="taskLists.length">
+    <div class="row">
+        <div class="col-sm-12" align="right">
+            <a class="btn btn-danger" data-toggle="modal" data-target="#clearConfirm">Remover todas as listas de tarefas</a>
+
+            <!-- Modal -->
+            <div align="left" class="modal fade" id="clearConfirm">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Limpar</h4>
+                        </div> <!-- Close modal header -->
+
+                        <div class="modal-body">
+                            <p>Deseja limpar a lista de tarefas?</p>
+                            <div class="alert alert-danger">
+                                <strong>Cuidado!</strong> Essa ação não pode ser desfeita!
+                            </div> <!-- Close alert -->
+                        </div> <!-- Close modal body -->
+
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-danger" ng-click="removeAllLists()" data-dismiss="modal">Limpar lista</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div> <!-- Close modal footer -->
+
+                    </div> <!-- Close modal content -->
+                </div> <!-- Close modal dialog -->
+            </div> <!-- Close modal -->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th align="center">Nome</th>
+                <th width="100">Progresso</th>
+                <th width="50">Listar tarefas</th>
+                <th width="50">Remover</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="taskList in taskLists">
+                <th align="center">{{taskList.name}}</th>
+                <th><div class="progress">
+                    <div class="progress-bar progress-bar-striped" aria-valuemin="0" aria-valuemax="100" style="width:{{taskList.donePercent}}%">
+                    </div> <!-- Close progress-bar -->
+                </div> <!-- Close progress --></th>
+                <th align="center"><a href="#/task_lists/{{taskList.id}}"><i class="fa fa-list"></i></a></th>
+                <th align="center"><a ng-click="removeList(taskList)"><i class="fa fa-close"></i></a></th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div ng-hide="taskLists.length">
+    <p>Não há listas de tarefas. Adicione uma clicando no botão abaixo.</p>
+    <a href="#/create_list" class="btn btn-primary">Adicionar lista</a>
+</div>

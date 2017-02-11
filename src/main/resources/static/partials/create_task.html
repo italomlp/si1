@@ -1,0 +1,24 @@
+<h4>Criar tarefa</h4>
+
+<form name="taskForm" ng-submit="saveTask()">
+    <div class="form-group">
+        <label for="name">Nome da tarefa</label>
+        <input class="form-control" type="text" id="name" ng-model="task.name" placeholder="Digite o nome" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea class="form-control" rows="5" type="text" size="500px" ng-model="task.description" id="description" placeholder="Comentários, descrição ou algo importante sobre a tarefa."></textarea>
+    </div>
+    <div class="form-group">
+        <label for="done">Feita</label>
+        <span>
+            <input type="checkbox" ng-model="task.done" id="done">
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="priority">Prioridade</label>
+        <select id="priority" class="form-control" ng-model="task.priority" ng-options="priority.priority as priority.name for priority in priorities"></select>
+    </div>
+    <a class="btn btn-info" href="#/task_lists/{{taskListId}}"><i class="fa fa-arrow-left"></i> Voltar</a>
+    <button type="submit" class="btn btn-warning" ng-disabled="!taskForm.$valid">{{operation}}</button>
+</form>
